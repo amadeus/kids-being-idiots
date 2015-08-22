@@ -30,5 +30,5 @@ express()
 	.get('/idiots', getIdiots)
 	.post('/idiots', getIdiots)
 	.listen(5252, function(){
-		console.log('Server is running http://localhost:8000');
+		console.log('Server is running http://localhost:5252');
 	});
