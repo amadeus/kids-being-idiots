@@ -1,0 +1,36 @@
+html, body {
+	position:absolute;
+	margin:0;
+	padding:0;
+	display:block;
+	width:100%;
+	height:100%;
+	background-color:#000;
+	font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	position:absolute;
+	top:50%;
+	left:0;
+	width:100%;
+	height:100px;
+	margin-top:-50px;
+	text-align:center;
+	color:rgba(255,255,255,0.1);
+	font-size:100px;
+	line-height:100px;
+}
+
+.idiot {
+	position:absolute;
+	width:100%;
+	height:100%;
+
+	background:transparent 50% 50%;
+	background-size:contain;
+}
+
+.idiot.actual-size {
+	background-size:auto;
+}
