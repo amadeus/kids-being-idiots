@@ -31,6 +31,19 @@ h1 {
 	background-size:contain;
 }
 
+.idiot:after {
+	content: 'press SPACE for more idiots, press F to toggle view';
+	position:absolute;
+	display:block;
+	background:rgba(0,0,0,0.6);
+	color:#fff;
+	bottom:10px;
+	right:10px;
+	font-size:12px;
+	line-height:20px;
+	padding:4px 10px 5px 10px;
+}
+
 .idiot.actual-size {
 	background-size:auto;
 }
