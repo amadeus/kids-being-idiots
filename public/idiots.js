@@ -5,6 +5,10 @@ var Idiots = function(){
 	this.idiot.className = 'idiot';
 	document.body.appendChild(this.idiot);
 
+	if (this.touch) {
+		document.body.className += ' touch';
+	}
+
 	// We only need to do this once...
 	this.request = new window.XMLHttpRequest();
 	this.request.addEventListener(
@@ -19,6 +23,9 @@ var Idiots = function(){
 };
 
 Idiots.prototype = {
+
+	touch: ('ontouchend' in window) || (window.DocumentTouch && document instanceof window.DocumentTouch) ?  true : false,
+
 	getRandomInt: function(min, max) {
 		return Math.floor(Math.random() * (max - min)) + min;
 	},
@@ -36,7 +43,19 @@ Idiots.prototype = {
 		if (!this.idiots.length) {
 			return;
 		}
-		document.body.addEventListener('keyup', this._handleKeyUp.bind(this), false);
+		if (this.touch) {
+			document.body.addEventListener(
+				'touchend',
+				this.showIdiot.bind(this),
+				false
+			);
+		} else {
+			document.body.addEventListener(
+				'keyup',
+				this._handleKeyUp.bind(this),
+				false
+			);
+		}
 		this.showIdiot();
 	},
 

@@ -32,7 +32,7 @@ h1 {
 }
 
 .idiot:after {
-	content: 'press SPACE for more idiots, press F to toggle view';
+	content:'press SPACE for more idiots, press F to toggle view';
 	position:absolute;
 	display:block;
 	background:rgba(0,0,0,0.6);
@@ -42,6 +42,10 @@ h1 {
 	font-size:12px;
 	line-height:20px;
 	padding:4px 10px 5px 10px;
+}
+
+.touch .idiot:after {
+	content:'TAP for more idiots';
 }
 
 .idiot.actual-size {
