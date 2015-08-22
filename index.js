@@ -29,6 +29,6 @@ express()
 	.use(express.static('public'))
 	.get('/idiots', getIdiots)
 	.post('/idiots', getIdiots)
-	.listen(8000, function(){
+	.listen(5252, function(){
 		console.log('Server is running http://localhost:8000');
 	});
