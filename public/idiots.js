@@ -33,6 +33,9 @@ Idiots.prototype = {
 			return;
 		}
 		this.idiots = JSON.parse(this.request.responseText);
+		if (!this.idiots.length) {
+			return;
+		}
 		document.body.addEventListener('keyup', this._handleKeyUp.bind(this), false);
 		this.showIdiot();
 	},
