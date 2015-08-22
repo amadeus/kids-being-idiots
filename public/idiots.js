@@ -42,7 +42,7 @@ Idiots.prototype = {
 
 	showIdiot: function(){
 		var newIdiot = this.getRandomIdiot();
-		if (newIdiot === this.currentIdiot) {
+		if (newIdiot === this.currentIdiot && this.idiots.length > 1) {
 			return this.showIdiot();
 		}
 		this.currentIdiot = newIdiot;
