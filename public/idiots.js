@@ -1,6 +1,6 @@
 (function(){
 
-var Idiots = function(){
+function Idiots(){
 	this.idiot = document.createElement('div');
 	this.idiot.className = 'idiot';
 	document.body.appendChild(this.idiot);
@@ -20,7 +20,7 @@ var Idiots = function(){
 	this.request.setRequestHeader('Content-Type', 'application/json');
 	this.request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	this.request.send();
-};
+}
 
 Idiots.prototype = {
 
@@ -31,8 +31,14 @@ Idiots.prototype = {
 	},
 
 	getRandomIdiot: function(){
-		var index = this.getRandomInt(0, this.idiots.length);
-		return this.idiots[index];
+		var index = this.getRandomInt(0, this.idiots.length),
+			idiot = this.idiots.splice(index, 1)[0];
+		this._idiots.push(idiot);
+		if (this.idiots.length === 0) {
+			this.idiots = this._idiots;
+			this._idiots = [];
+		}
+		return idiot;
 	},
 
 	_handleReadyStateChange: function(){
@@ -40,6 +46,7 @@ Idiots.prototype = {
 			return;
 		}
 		this.idiots = JSON.parse(this.request.responseText);
+		this._idiots = [];
 		if (!this.idiots.length) {
 			return;
 		}
@@ -61,19 +68,18 @@ Idiots.prototype = {
 
 	showIdiot: function(){
 		var newIdiot = this.getRandomIdiot();
-		if (newIdiot === this.currentIdiot && this.idiots.length > 1) {
-			return this.showIdiot();
-		}
 		this.currentIdiot = newIdiot;
 		this.idiot.style.backgroundImage = 'url(' + this.currentIdiot + ')';
 	},
 
 	_handleKeyUp: function(event){
 		if (event.keyCode === 70) {
-			return this.toggleFullscreen();
+			this.toggleFullscreen();
+			return;
 		}
 		if (event.keyCode === 32) {
-			return this.showIdiot();
+			this.showIdiot();
+			return;
 		}
 	},
 
