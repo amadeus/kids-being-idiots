@@ -2,6 +2,8 @@
   "name": "kids-being-idiots",
   "version": "1.0.0",
   "description": "A way to watch kids being idiots.",
+  "repository": "https://github.com/amadeus/kids-being-idiots",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
